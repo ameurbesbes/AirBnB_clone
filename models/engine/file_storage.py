@@ -2,11 +2,13 @@
 """
 """
 import json
-#from models.base_model import BaseModel
+from models.base_model import BaseModel
 
 class FileStorage:
 	__file_path = "file.json"
 	__objects = {}
+	
+	class_dict = {"BaseModel" : BaseModel}
 
 	def all(self):
 		return self.__objects
@@ -22,7 +24,6 @@ class FileStorage:
 			json.dump(my_dict, file)
 
 	def reload(self):
-
 		try:
 			with open(self.__file_path , "r" ) as file:
 				new_obj = json.load(file)
